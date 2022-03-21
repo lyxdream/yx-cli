@@ -20,7 +20,7 @@ program
 .description('create a new project')
 .option('-f,--force','overwrite target directory if exists')
 .action((name,cmd)=>{
-    console.log(name,cmd)
+    // console.log(name,cmd)
     //调用create模块去创建
     require('../lib/create')(name,cmd)
 })
@@ -35,7 +35,7 @@ program
 .option('-s,--set <path> <value>')
 .option('-d,--delete <path>','delete option from config')
 .action((value,cmd)=>{
-    console.log(value,cmd)
+    // console.log(value,cmd)
 })
 
 program
@@ -43,7 +43,7 @@ program
 .description('start and open yx-cli ui')
 .option('-p,--port <port>','port used for this ui server')
 .action((cmd)=>{
-    console.log(cmd)
+    // console.log(cmd)
 })
 // 通过这两个选项可以修改帮助信息的首行提示，name属性也可以从参h数中推导出来。例如：
 //设置版本
