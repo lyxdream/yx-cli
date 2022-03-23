@@ -101,12 +101,17 @@ node.js 内置了对命令行操作的支持，package.json 中的 bin 字段可
 
 
 ```bash
+# link相当于将本地模块连接到npm目录下，这个npm目录可以直接访问，所以就相当于当前包可以直接访问了
 npm link 
 （npm link --force 强制覆盖之前的链接)
-
 ```
 
 ## 处理命令行(commander)
+
+主要实现以下三个核心功能：
+  -  创建项目
+  -  更改配置文件
+  -  ui界面 @vue/ui
 
 1. 使用commander
 
@@ -124,48 +129,62 @@ const  program = require('commander')
 program.parse(process.argv) // process.argv就是用户在命令行中传入的参数
 ```
 
+- 执行命令yx --help 可以看到已经有了提示
 
-
-
-
-
-
-
-1）配置可执行命令 commander
-
-
-- 解析用户执行命令时传入的参数
-
-
-
-- 通过这两个选项可以修改帮助信息的首行提示，name属性也可以从参数中推导出来。例如：
-
-```bash
-program
-.usage(`<command> [option]`)
 ```
-- 版本号
+Usage: yx [options]
 
-```bash
+Options: 
+  -h, --help     display help for command     
+```
+- 修改帮助信息的首行提示
+
+ ```js
+  program.usage(`<command> [option]`)
+ ```
+ 执行yx --help可以看到
+
+ ```
+Usage: yx <command> [option]
+
+Options: 
+  -h, --help                   display help for command    
+ ```
+
+4. 版本号
+
+> .version()方法可以设置版本，其默认选项为-V和--version，设置了版本后，命令行会输出当前的版本号。
+
+```js
 program
 .version(`yx-cli@${require('../package.json').version}`)
 .usage(`<command> [option]`)
 ```
+执行yx --version可以看到
 
-- 核心功能
-  1. 创建项目
-  2. 更改配置文件
-  3. ui界面 @vue/ui
+```
+ yx-cli@1.0.0
+```
 
-  万一重名了，强制创建模式
+执行yx --help 可以看到：
 
-  
+```
+Usage: yx <command> [option]
+
+Options:
+  -V, --version                output the version number
+  -h, --help                   display help for command
+```
 
 
 
-2）命令行交互的功能 inquirer
-3) 将模版下载下来  download-git-repo
-4）根据用户的选择动态的生成功能  metalsmith
+
+
+
+
+
+
+
 
 
 
