@@ -7,9 +7,7 @@
     "yx": "./bin/yx",
     "yx-cli": "./bin/yx"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,8 +19,5 @@
     "fs-extra": "^10.0.1",
     "inquirer": "^8.2.1",
     "ora": "^5.4.1"
-  },
-  "devDependencies": {
-    "eslint": "^8.11.0"
   }
 }

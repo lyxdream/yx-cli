@@ -1,3 +1,3 @@
 #! D:/software/nodejs/node
 
-require('../lib/main.js');
+require("../lib/main.js");
