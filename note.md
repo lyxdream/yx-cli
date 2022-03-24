@@ -29,7 +29,7 @@
 
   初始化配置文件 yx-cli config set repo repo-name
 
-## 搭建环境
+## 1. 搭建环境
 
 1. 创建一个空的目录(yx-cli),使用npm init 初始化
 
@@ -40,7 +40,7 @@ npx eslint --init # 初始化eslint配置文件
 
 ```
 
-2. 目录结构
+ 2. 目录结构
 
 ```
 ├── bin
@@ -91,7 +91,7 @@ node.js 内置了对命令行操作的支持，package.json 中的 bin 字段可
 }
 
 ```
-- yx文件中使用main作为入口文件，并且以node环境执行此文件(创建可执行的脚本)
+yx文件中使用main作为入口文件，并且以node环境执行此文件(创建可执行的脚本)
 
 ```bash
  #! /user/bin/env node
@@ -113,6 +113,7 @@ npm link
   -  更改配置文件
   -  ui界面 @vue/ui
 
+### 配置可执行的命令
 1. 使用commander
 
 ```bash
@@ -175,6 +176,8 @@ Options:
   -V, --version                output the version number
   -h, --help                   display help for command
 ```
+
+### 创建项目
 
 
 
