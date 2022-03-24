@@ -49,7 +49,12 @@ npx eslint --init # 初始化eslint配置文件
 │   ├── create.js // 创建命令
 │   ├── Creator   // Creator类
 │   ├── request.js // 存放请求
-│   └── utils   // 存放工具方法
+│   ├── config   // 
+│   └── ui   // 
+├── utils
+│   ├── constants.js // 常量
+│   └── index   // 公用方法
+
 ```
 
 3. yx 命令
