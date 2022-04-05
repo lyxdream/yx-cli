@@ -13,12 +13,18 @@
 const slash = require('slash');
 const { name, version } = require('../package.json');
 
-// 存储模板的位置 下载前先找临时目录存放下载的文件
-const downLoadDirectory = slash(`${process.env[process.platform === 'darwin'
-  ? 'HOME' : 'USERPROFILE']}\\.template`);
+const HOME = process.env[process.platform === 'darwin' ? 'HOME' : 'USERPROFILE'];
+
+const downLoadDirectory = slash(`${HOME}\\.template`);// 存储模板的位置 下载前先找临时目录存放下载的文件
+const configFile = `${HOME}/.yxrc`; // 配置文件的存储位置
+const defaultConfig = {
+  repo: 'lyxdream', // 默认拉取的仓库名或者是用户
+};
 
 module.exports = {
   name,
   version,
   downLoadDirectory,
+  configFile, // 配置文件的存储位置
+  defaultConfig, // 默认配置
 };

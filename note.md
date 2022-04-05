@@ -20,6 +20,11 @@
 - chalk ：粉笔帮我们在控制台中画出各种各样的颜色
 - metalsmith ：读取所有文件,实现模板渲染
 - consolidate ：统一模板引擎
+- ncp 复制
+- ini 模块解析配置文件 （一般rc类型的配置文件都是ini格式也就是:repo=zhu-cli register=github
+  registry: 'zhufeng-cli',
+  type: 'orgs'
+）
 
 ## 实现的功能及其效果如下：
 
