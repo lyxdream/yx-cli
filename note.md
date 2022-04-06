@@ -14,7 +14,7 @@
 
 ## 需要的第三方包
 
-- commander ：参数解析 --help 其实就借助了他~
+- commander ：命令行 参数解析 --help 其实就借助了他~
 - inquirer ：交互式命令行工具，有他就可以实现命令行的选择功能
 - download-git-repo ：在 git 中下载模板
 - chalk ：粉笔帮我们在控制台中画出各种各样的颜色
@@ -22,8 +22,7 @@
 - consolidate ：统一模板引擎
 - ncp 复制
 - ini 模块解析配置文件 （一般rc类型的配置文件都是ini格式也就是:repo=zhu-cli register=github
-  registry: 'zhufeng-cli',
-  type: 'orgs'
+- symbols 为各种日志级别提供着色的符号
 ）
 
 ## 实现的功能及其效果如下：
