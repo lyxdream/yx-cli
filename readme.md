@@ -41,7 +41,7 @@ npm start
 使用 yx config [value]
 
 如：yx config --set a 1
-输入之后会在home 目录下有一个名为 .yxclirc 多一个a=1
+输入之后会在home 目录下有一个名为 .yxclirc文件 多一个序列a=1
 
 选项：
   -g,--get    <key>              获取key对应的值
