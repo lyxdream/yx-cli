@@ -18,12 +18,11 @@
 - inquirer ：交互式命令行工具，有他就可以实现命令行的选择功能
 - download-git-repo ：在 git 中下载模板
 - chalk ：粉笔帮我们在控制台中画出各种各样的颜色
-- metalsmith ：读取所有文件,实现模板渲染
+- metalsmith ：读取所有文件,实现模板渲染 用于遍历文件夹，判断是否需要进行模板渲染
 - consolidate ：统一模板引擎
 - ncp 复制
 - ini 模块解析配置文件 （一般rc类型的配置文件都是ini格式也就是:repo=zhu-cli register=github
 - symbols 为各种日志级别提供着色的符号
-）
 
 ## 实现的功能及其效果如下：
 
@@ -50,11 +49,11 @@ npx eslint --init # 初始化eslint配置文件
 ├── package.json
 ├── lib
 │   ├── main.js // 入口文件
-│   ├── create.js // 创建命令
+│   ├── create.js // create命令
 │   ├── Creator   // Creator类
 │   ├── request.js // 存放请求
-│   ├── config   // 
-│   └── ui   // 
+│   ├── config   // 存放配置
+│   └── ui   // ui界面
 ├── utils
 │   ├── constants.js // 常量
 │   └── index   // 公用方法
@@ -273,7 +272,23 @@ program.on("--help", function () {
 
 效果如下：
 
+```
 
+Usage: yx <command> [option]
+
+Options:
+  -V, --version                output the version number
+  -h, --help                   display help for command 
+
+Commands:
+  create [options] <app-name>  create a new project
+  config [options] [value]     inspect and modify the config
+  ui [options]                 start and open yx-cli ui
+  help [command]               display help for command
+
+Run yx-cli <command> --help show details
+
+```
 
 为了让代码看着简洁一点，做下优化 根据我们想要实现的功能配置执行动作，遍历产生对应的命令
 
@@ -354,20 +369,97 @@ program
 效果如下：
 
 
-## create命令
+## 核心命令
 
-create命令的主要作用就是去git仓库中拉取模板并下载对应的版本到本地，如果有模板则根据用户填写的信息渲染好模板，生成到当前运行命令的目录下~
+
+### create命令
+
+- create命令的主要作用就是去git仓库中拉取模板并下载对应的版本到本地，
+- 如果有ask.json则根据用户填写的信息渲染好模板，生成到当前运行命令的目录下
+- 如果没有ask.json则直接拷贝到当前目录下
+
+在当前目录下，新增项目目录， project-name 为项目名
+
+```
+用法：yx create  <project-name>
+
+选项：
+  -f, --force                     覆写目标目录可能存在的配置
+  -h, --help                      输出使用帮助信息
+```
 
 创建create.js
 
 ```js
+const path = require('path');
+const fs = require('fs-extra');
+const inquirer = require('inquirer');
+const Creator = require('./Creator');
 
+// eslint-disable-next-line func-names
+module.exports = async function (projectName, options) {
+  // 创建项目
+  const cwd = process.cwd(); // 获取当前命令执行时的工作目录
+  const targetDir = path.join(cwd, projectName); // 目标目录
+  // 判断当前目录是否存在
+  if (fs.existsSync(targetDir)) {
+    if (options.force) {
+      // 是否是强制创建，删除已有的
+      await fs.remove(targetDir);
+    } else {
+      // 提示用户是否确定要覆盖  配置询问的方式
+      const { action } = await inquirer.prompt([
+        {
+          name: 'action', // 选择的结果
+          type: 'list', // 展示方式
+          message: 'Target directory already exists Pick an action',
+          choices: [
+            { name: 'Overwrite', value: 'overwrite' },
+            { name: 'Cancel', value: false },
+          ],
+        },
+      ]);
+      if (!action) {
+        return;
+      } if (action === 'overwrite') {
+        console.log('\r\nRemoveing....');
+        await fs.remove(targetDir);
+      }
+    }
+  }
+  // 创建项目
+  const creator = new Creator(projectName, targetDir);
+  creator.create();
+};
+
+```
+详细实现过程可见Creator.js
+
+###  config 配置拉取模板的仓库地址
+
+- set操作之后会在用户的 home 目录下生成一个名为 .yxclirc 的 文件
+- config命令通过控制这个文件的读写，删除得操作，控制拉取的模版仓库对应的模板仓库地址
+
+如果没有.yxclirc文件，默认的配置参数如下： 
+
+```
+const DEFAULT_CONFIG = {
+  repo: 'https://github.com/lyxdream/vue3-template',
+};
 
 ```
 
+```
+使用 yx config [value]
 
-metalsmith (用于遍历文件夹，判断是否需要进行模板渲染)
-consolidate (统一所有的模板引擎)
+如：yx config --set user hahaha
+输入之后会在home 目录下有一个名为 .yxclirc文件 多一个序列user=hahaha
 
-与用户进行命令行交互后，将对应的内容动态注入到模板中，这里常用的模板引擎有ejs、handlebars等，consolidate将这里用到的引擎进行了统一，可以自由选择
-onsolidate主要是对不同模板引擎的选择分发，这里挑选了最核心的几个功能函数
+选项：
+  -g,--get    <key>              获取key对应的值
+  -s,--set    <key>  <val>       .yxclirc设置key=val
+  -d,--delete <key>              .yxclirc删除key
+  -gAll,--getAll                 获取.yxclirc对应的所有的值
+```
+
+

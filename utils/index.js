@@ -32,7 +32,19 @@ async function loadRemote(repository, target, options = { clone: true }) {
   });
 }
 
+// 获取仓库名称和github用户名
+function repoInfo(url) {
+  const regUrl = /^https(.*)\.com(\/.+)(\/.+)/g;
+  const list = regUrl.exec(url);
+  return {
+    templateUrl: url,
+    userName: list[2].slice(1),
+    repoName: list[3].slice(1),
+  };
+}
+
 module.exports = {
   wrapLoading,
   loadRemote,
+  repoInfo,
 };

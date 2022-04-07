@@ -8,16 +8,13 @@ const slash = require('slash');
 const { name, version } = require('../package.json');
 
 const DEFAULT_CONFIG = {
-  user: 'lyxdream',
-  repo: 'vue3-template', // 默认拉取的仓库名或者是用户
-  register: 'github',
+  repo: 'https://github.com/lyxdream/vue3-template',
 };
 
 const HOME = process.env[process.platform === 'darwin' ? 'HOME' : 'USERPROFILE'];
 const downLoadDirectory = slash(`${HOME}\\.template`);// 存储模板的位置 下载前先找临时目录存放下载的文件
 const CONFIG_FILE = slash(`${HOME}/.yxclirc`); // 配置文件的存储位置
 const BASE_REQUEST_URL = 'https://api.github.com';
-const BASE_TEMPLATE_URL = 'https://github.com';
 module.exports = {
   name,
   version,
@@ -25,5 +22,4 @@ module.exports = {
   CONFIG_FILE, // 配置文件的存储位置
   DEFAULT_CONFIG, // 默认配置
   BASE_REQUEST_URL, // 默认拉取远程api地址
-  BASE_TEMPLATE_URL, // 拉取远程模板仓库基础地址
 };

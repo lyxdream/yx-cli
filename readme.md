@@ -1,6 +1,14 @@
 
 # 前端脚手架命令行工具
 
+
+实现的功能如下：
+
+根据模板初始化项目 yx-cli create project-name
+
+初始化配置文件 yx-cli config set repo template-url
+
+
 ## 安装
 
 ```bash
@@ -9,20 +17,7 @@ npm i yx-cli -g
 
 ## 使用
 
-
-```bash
-yx create project-name
-cd  project-name
-npm install
-npm start
-```
-
-## 介绍
-
-**主要实现了create和config两个主要命令**
-
-- create：通过命令行提示用户选择仓库和分支，拉取github的模版，通过 http git clone template-name 的方式，下载到系统目录下，用户可以根据提示给项目命名、设置描述，自动在当前目录生成脚手架文件.
-
+### create 新建项目
 
 在当前目录下，新增项目目录， project-name 为项目名
 
@@ -30,18 +25,25 @@ npm start
 用法：yx create  <project-name>
 
 选项：
-  -f, --force                     覆写目标目录可能存在的配置
+  -f, --force                     是否强制覆盖已有的目标目录
   -h, --help                      输出使用帮助信息
 ```
 
-- config 在用户的 home 目录下有一个名为 .yxclirc 的 文件,config命令通过控制这个文件的读写，删除得操作，控制拉取的模版仓库名称和仓库类型
+### config 配置文件
 
+如果配置自定义的模板，修改.yxclirc的配置文件
+
+```
+yx config --set repo <模板仓库地址>
+
+```
+
+如：yx config --set repo https://github.com/lyxdream/vue3-template
+
+config命令其他选项：
 
 ```
 使用 yx config [value]
-
-如：yx config --set a 1
-输入之后会在home 目录下有一个名为 .yxclirc文件 多一个序列a=1
 
 选项：
   -g,--get    <key>              获取key对应的值
@@ -50,9 +52,29 @@ npm start
   -gAll,--getAll                 获取.yxclirc对应的所有的值
 ```
 
+### help
 
+yx --help
 
+```
+Usage: yx <command> [option]
 
+Options:
+  -V, --version                output the version number
+  -h, --help                   display help for command 
+
+Commands:
+  create [options] <app-name>  create a new project
+  config [options] [value]     inspect and modify the config
+  ui [options]                 start and open yx-cli ui
+  help [command]               display help for command
+
+Run yx-cli <command> --help show details
+
+```
+
+## todo list
+- ui命令
 
 
 
