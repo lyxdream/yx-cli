@@ -9,7 +9,8 @@
   "scripts": {
     "commit": "git-cz",
     "create": "node bin/yx.js create",
-    "lint": "eslint lib"
+    "eslint": "eslint src",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "",
