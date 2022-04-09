@@ -7,6 +7,7 @@
     "yx-cli": "./bin/yx"
   },
   "scripts": {
+    "commit": "git-cz",
     "create": "node bin/yx.js create",
     "lint": "eslint lib"
   },
@@ -30,14 +31,27 @@
     "slash": "^3.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.12.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
-    "husky": "^7.0.4"
+    "git-cz": "^4.8.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "standard-version": "^9.3.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
+  "lint-staged": {
+    "./**/*.{js}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
   }
 }
