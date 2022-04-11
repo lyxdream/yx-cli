@@ -4,7 +4,7 @@
   "description": "脚手架",
   "main": "index.js",
   "bin": {
-    "yx-cli": "./bin/yx"
+    "lyx-web-cli": "./bin/yx"
   },
   "scripts": {
     "commit": "git-cz",

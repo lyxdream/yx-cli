@@ -4,15 +4,15 @@
 
 实现的功能如下：
 
-根据模板初始化项目 yx-cli create project-name
+根据模板初始化项目 lyx-web-cli create project-name
 
-初始化配置文件 yx-cli config set repo template-url
+初始化配置文件 lyx-web-cli config set repo template-url
 
 
 ## 安装
 
 ```bash
-npm i yx-cli -g
+npm i lyx-web-cli -g
 ```
 
 ## 使用
@@ -66,10 +66,10 @@ Options:
 Commands:
   create [options] <app-name>  create a new project
   config [options] [value]     inspect and modify the config
-  ui [options]                 start and open yx-cli ui
+  ui [options]                 start and open lyx-web-cli ui
   help [command]               display help for command
 
-Run yx-cli <command> --help show details
+Run lyx-web-cli <command> --help show details
 
 ```
 
