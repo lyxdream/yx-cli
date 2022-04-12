@@ -1,6 +1,6 @@
 {
   "name": "@lyx-utils/cli",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "前端项目脚手架",
   "main": "index.js",
   "bin": {
@@ -19,8 +19,9 @@
     "release": "standard-version"
   },
   "keywords": [
-    "yx",
+    "lyx",
     "cli",
+    "lyx-cli",
     "yx-cli",
     "脚手架"
   ],
