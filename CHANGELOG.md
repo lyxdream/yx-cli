@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/lyxdream/yx-cli/compare/v1.1.1...v1.1.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* 🐛 修复全局安装报错的问题 ([1a575ea](https://github.com/lyxdream/yx-cli/commit/1a575ea7b9604fbca3c7b83abfdabefc3206188a))
+* 🐛 修改版本号 ([067dfce](https://github.com/lyxdream/yx-cli/commit/067dfcefc48d2643508ee6a95841bc6943ea6036))
+* 修改包名 ([b73f534](https://github.com/lyxdream/yx-cli/commit/b73f5349224e6c2dbef77a94ad72f33e92299ac8))
+
 ### [1.1.1](https://github.com/lyxdream/yx-cli/compare/v1.1.0...v1.1.1) (2022-04-09)
 
 ## 1.1.0 (2022-04-09)
