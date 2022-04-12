@@ -12,7 +12,7 @@
 ## 安装
 
 ```bash
-npm i yx-cli -g
+npm install @lyx-utils/cli -g
 ```
 
 ## 使用

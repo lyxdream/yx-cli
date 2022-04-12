@@ -1,13 +1,16 @@
 {
-  "name": "@yx/cli",
+  "name": "@lyx-utils/cli",
   "version": "1.1.5",
   "description": "前端项目脚手架",
   "main": "index.js",
   "bin": {
-    "yx-cli": "./bin/yx.js",
-    "yx": "./bin/yx.js"
+    "yx-cli": "bin/yx.js",
+    "yx": "bin/yx.js"
   },
-  "repository": "https://github.com/lyxdream/yx-cli.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyxdream/yx-cli.git"
+  },
   "homepage": "https://github.com/lyxdream/yx-cli#readme",
   "scripts": {
     "commit": "git-cz",
@@ -62,5 +65,11 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "bugs": {
+    "url": "https://github.com/lyxdream/yx-cli/issues"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
