@@ -1,4 +1,4 @@
-# 前端脚手架命令行工具 lyx-web-cli贡献指南
+# 前端脚手架命令行工具 yx-cli贡献指南
 
 
 ## 开发设置
@@ -10,15 +10,15 @@ npm install
 
 npm link
 
-lyx-web-cli create project-name
+yx-cli create project-name
 
 ```
 
 ## 实现核心功能如下：
 
-根据模板初始化项目 lyx-web-cli create project-name
+根据模板初始化项目 yx-cli create project-name
 
-初始化配置文件 lyx-web-cli config set repo template-url
+初始化配置文件 yx-cli config set repo template-url
 
 
 

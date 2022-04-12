@@ -4,15 +4,15 @@
 
 实现的功能如下：
 
-根据模板初始化项目 lyx-web-cli create project-name
+根据模板初始化项目 yx-cli create project-name
 
-初始化配置文件 lyx-web-cli config set repo template-url
+初始化配置文件 yx-cli config set repo template-url
 
 
 ## 安装
 
 ```bash
-npm i lyx-web-cli -g
+npm i yx-cli -g
 ```
 
 ## 使用
@@ -22,7 +22,7 @@ npm i lyx-web-cli -g
 在当前目录下，新增项目目录， project-name 为项目名
 
 ```
-用法：yx create  <project-name>
+用法：yx-cli create  <project-name>
 
 选项：
   -f, --force                     是否强制覆盖已有的目标目录
@@ -34,16 +34,16 @@ npm i lyx-web-cli -g
 如果配置自定义的模板，修改.yxclirc的配置文件
 
 ```
-yx config --set repo <模板仓库地址>
+yx-cli config --set repo <模板仓库地址>
 
 ```
 
-如：yx config --set repo https://github.com/lyxdream/vue3-template
+如：yx-cli config --set repo https://github.com/lyxdream/vue3-template
 
 config命令其他选项：
 
 ```
-使用 yx config [value]
+使用 yx-cli config [value]
 
 选项：
   -g,--get    <key>              获取key对应的值
@@ -54,10 +54,10 @@ config命令其他选项：
 
 ### help
 
-yx --help
+yx-cli --help
 
 ```
-Usage: yx <command> [option]
+Usage: yx-cli <command> [option]
 
 Options:
   -V, --version                output the version number
@@ -66,10 +66,10 @@ Options:
 Commands:
   create [options] <app-name>  create a new project
   config [options] [value]     inspect and modify the config
-  ui [options]                 start and open lyx-web-cli ui
+  ui [options]                 start and open yx-cli ui
   help [command]               display help for command
 
-Run lyx-web-cli <command> --help show details
+Run yx-cli <command> --help show details
 
 ```
 

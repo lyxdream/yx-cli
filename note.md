@@ -26,13 +26,13 @@
 
 ## 实现的功能及其效果如下：
 
-根据模板初始化项目 lyx-web-cli create project-name
+根据模板初始化项目 yx-cli create project-name
 
-初始化配置文件 lyx-web-cli config set repo repo-name
+初始化配置文件 yx-cli config set repo repo-name
 
 ## 1. 搭建环境
 
-1. 创建一个空的目录(lyx-web-cli),使用 npm init 初始化
+1. 创建一个空的目录(yx-cli),使用 npm init 初始化
 
 ```bash
 npm init -y # 初始化package.json
@@ -64,7 +64,7 @@ npx eslint --init # 初始化eslint配置文件
 
 node.js 内置了对命令行操作的支持，package.json 中的 bin 字段可以定义命令名和关联的执行文件。
 
-设置在命令行执行 lyx-web-cli 或者 yx 时调用 bin 目录下的 yx 文件(配置 packge.json 中的 bin 字段)
+设置在命令行执行 yx-cli 或者 yx 时调用 bin 目录下的 yx 文件(配置 packge.json 中的 bin 字段)
 
 ```json
 {
@@ -74,7 +74,7 @@ node.js 内置了对命令行操作的支持，package.json 中的 bin 字段可
   "main": "index.js",
   "bin": {
     "yx": "./bin/yx",
-    "lyx-web-cli": "./bin/yx"
+    "yx-cli": "./bin/yx"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -169,14 +169,14 @@ Options:
 
 ```js
 program
-  .version(`lyx-web-cli@${require("../package.json").version}`)
+  .version(`yx-cli@${require("../package.json").version}`)
   .usage(`<command> [option]`);
 ```
 
 执行 yx --version 可以看到
 
 ```
- lyx-web-cli@1.0.0
+ yx-cli@1.0.0
 ```
 
 执行 yx --help 可以看到：
@@ -228,7 +228,7 @@ program
 
 program
   .command("ui")
-  .description("start and open lyx-web-cli ui")
+  .description("start and open yx-cli ui")
   .option("-p,--port <port>", "port used for this ui server")
   .action((cmd) => {
     console.log(cmd);
@@ -236,7 +236,7 @@ program
 
 //设置版本 解析用户执行命令时传入的参数
 program
-  .version(`lyx-web-cli@${version}`)
+  .version(`yx-cli@${version}`)
   .usage(`<command> [option]`)
   .parse(process.argv);
 ```
@@ -248,7 +248,7 @@ program
 ```js
 program.on("--help", function () {
   console.log();
-  console.log("Run lyx-web-cli <command> --help show details");
+  console.log("Run yx-cli <command> --help show details");
   console.log();
 });
 ```
@@ -265,7 +265,7 @@ npm install chalk
 const chalk = require("chalk");
 program.on("--help", function () {
   console.log();
-  console.log(`Run ${chalk.cyan(`lyx-web-cli <command> --help`)} show details`);
+  console.log(`Run ${chalk.cyan(`yx-cli <command> --help`)} show details`);
   console.log();
 });
 ```
@@ -283,10 +283,10 @@ Options:
 Commands:
   create [options] <app-name>  create a new project
   config [options] [value]     inspect and modify the config
-  ui [options]                 start and open lyx-web-cli ui
+  ui [options]                 start and open yx-cli ui
   help [command]               display help for command
 
-Run lyx-web-cli <command> --help show details
+Run yx-cli <command> --help show details
 
 ```
 
@@ -305,7 +305,7 @@ const actionsMap = {
     command: "create <app-name>",
     alias: "cr",
     description: "create a new project",
-    examples: ["lyx-web-cli create <template-name>"],
+    examples: ["yx-cli create <template-name>"],
   },
   config: {
     // 配置配置文件
@@ -313,17 +313,17 @@ const actionsMap = {
     alias: "c",
     description: "inspect and modify the config",
     examples: [
-      "lyx-web-cli config get <k>",
-      "lyx-web-cli config set <k> <v>",
-      "lyx-web-cli config delete <k>",
+      "yx-cli config get <k>",
+      "yx-cli config set <k> <v>",
+      "yx-cli config delete <k>",
     ],
   },
   ui: {
     //ui界面 如：@vue/ui
     command: "ui",
     alias: "u",
-    description: "start and open lyx-web-cli ui",
-    examples: ["lyx-web-cli --port <port>"],
+    description: "start and open yx-cli ui",
+    examples: ["yx-cli --port <port>"],
   },
   "*": {
     command: "*",
@@ -361,7 +361,7 @@ program.on("--help", () => {
 
 //设置版本 修改帮助信息的首行提示 解析用户执行命令时传入的参数
 program
-  .version(`lyx-web-cli@${version}`)
+  .version(`yx-cli@${version}`)
   .usage(`<command> [option]`)
   .parse(process.argv);
 
