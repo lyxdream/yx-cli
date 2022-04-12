@@ -32,7 +32,7 @@ npm install @lyx-utils/cli -g
 ### config 配置文件
 
 
-默认拉取的是https://github.com/lyxdream/vue3-template仓库的模版，如果配置自定义的模板，修改.yxclirc的配置文件
+默认拉取的是https://github.com/lyxdream/vue3-template仓库的模版，如果想配置自定义的模板，可修改.yxclirc的配置文件
 
 ```
 yx-cli config --set repo <模板仓库地址>
