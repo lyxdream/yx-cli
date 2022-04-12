@@ -1,10 +1,10 @@
 {
-  "name": "yx",
-  "version": "1.1.1",
+  "name": "lyx-web-cli",
+  "version": "1.1.0",
   "description": "脚手架",
   "main": "index.js",
   "bin": {
-    "yx-cli": "./bin/yx"
+    "lyx-web-cli": "./bin/yx.js"
   },
   "scripts": {
     "commit": "git-cz",
@@ -13,7 +13,7 @@
     "release": "standard-version"
   },
   "keywords": [],
-  "author": "",
+  "author": "yx",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
